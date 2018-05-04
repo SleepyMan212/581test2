@@ -14,15 +14,16 @@ void print(person *p ,int counter);
 void resize(person *p,const int counter,int &size){
   if(size!=counter) return;
 
-  cout<<"queue/stack full, allocate double size "<<endl;
 
   // request memory
-  p = (person*)realloc(p,size*2*sizeof(person));
+  void *new_p = realloc(p,size*2*sizeof(person));
 
-  if(p==NULL){
-    cout<<"fail"<<endl;
+  if(new_p==NULL){
+    cout<<"fail for allocation double size"<<endl;
     return;
   }else{
+    p=(person*)new_p;
+    cout<<"queue/stack full, allocate double "<<size*2<<endl;
     size*=2;
   }
 }
@@ -42,32 +43,33 @@ int main(int argc, char const *argv[]) {
 
   print(p,counter);
 
+  free(p);
   return 0;
 }
 void input(person *p,int &size,int &counter){
   char s[100];
   while (fgets(s,100,stdin)!=NULL) {
-    char name[100];
+    string name;
     // spilt the data
-    int flag=0,i,j;
-    for(j=i=0; i<strlen(s); i++){
+    int flag=0,i;
+    for(i=0; i<strlen(s); i++){
       if(s[i]=='\"'){
         flag++;
         if(flag==2){
-          name[j]='\0';
+          // name[j]='\0';
           break;
         }
       }else
-        name[j++]=s[i];
+        name+=s[i];
     }
     char *age=strtok(s+i,", \"");
     char *sex=strtok(NULL,", \"");
 
-    strcpy(p[counter].name,name);
+    strcpy(p[counter].name,name.c_str());
     p[counter].age=atoi(age);
-    sex=="female"?p[counter].sex=female:p[counter].sex=male;
+    strcmp(sex,"female\n")==0?p[counter].sex=female:p[counter].sex=male;
     counter++;
-
+    // print(p,counter);
     resize(p,counter,size);
   }
 }
