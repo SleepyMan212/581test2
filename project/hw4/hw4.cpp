@@ -8,15 +8,23 @@ using namespace std;
 #endif
 typedef double (*poly)(double);
 static bool is_def=false;
-void integrate(poly p,double from,double to){
-  double d=0.0001;
+void integrate(poly p,double from,double to,double d){
+  // double d=0.0000001;
+  d=0.0000001;
+  bool is_neg=false;
+  if(from>to){
+    is_neg=true;
+    double tmp = from;
+    from=to;
+    to=tmp;
+  }
   double sum=0;
   // Riemann integral
   for(double i=from; i<=to; i+=d){
     sum+=(p(i)*d);
   }
 
-  printf("The integration is : %.3llf\n",sum);
+  printf("The integration is : %.5llf\n",sum*(is_neg?-1:1));
 }
 void create_poly(double *poly,int &index){
   index=0;
@@ -50,31 +58,36 @@ double f(double x){
 void instruction(){
   cout<<"It's a integration calculator "<<endl
       <<"1. sin(x)"<<endl
-      <<"2. abs(x)"<<endl
+      <<"2. cos(x)"<<endl
       <<"3. sqrt(x)"<<endl
-      <<"4. custom"<<endl
+      <<"4. abs(x)"<<endl
+      <<"5. custom"<<endl
       <<"input your choice:";
 }
 int main(int argc, char const *argv[]) {
   int choice;
-  double from,to;
+  double from,to,d;
   instruction();
   cin>>choice;
   cout<<"Input your range begin and end: ";
   cin>>from>>to;
+  cout<<"Input the deleta: ";
+  cin>>d;
   switch (choice) {
     case 1:
-      integrate(sin,from,to);
+      integrate(sin,from,to,d);
       break;
     case 2:
-      integrate(fabs,from,to);
+      integrate(cos,from,to,d);
       break;
     case 3:
-      integrate(sqrt,from,to);
+      integrate(sqrt,from,to,d);
       break;
     case 4:
-      cout<<"A"<<endl;
-      integrate(f,from,to);
+      integrate(fabs,from,to,d);
+      break;
+    case 5:
+      integrate(f,from,to,d);
       break;
     default:
       cout<<"Please input the correctly choice"<<endl;
