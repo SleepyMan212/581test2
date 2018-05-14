@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]) {
       move+=(abs(a[i]-ave));
     }
     cout<<"Set #"<<count++<<endl;
-    cout<<"The minimum number of moves is "<<move/2<<endl;
+    cout<<"The minimum number of moves is "<<move/2<<"."<<endl<<endl;;
   }
   return 0;
 }

@@ -31,7 +31,6 @@ int main(int argc, char const *argv[]) {
   int i=0;
   cin>>nCase;
   while (nCase--) {
-    cout<<++i<<": ";
     solve();
 
     if(nCase) cout<<endl;

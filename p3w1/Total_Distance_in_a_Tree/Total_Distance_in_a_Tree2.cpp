@@ -31,7 +31,6 @@ void solve(){
   cout<<sum*2;
 }
 int main(int argc, char const *argv[]) {
-  freopen("graph_distanceTree2.in","r",stdin);
   int nCase;
   cin>>nCase;
   while (nCase--) {

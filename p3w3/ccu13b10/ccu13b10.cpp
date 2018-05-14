@@ -13,13 +13,12 @@ int main(int argc, char const *argv[]) {
     v.clear();
     memset(p,0,sizeof(p));
     cin>>num>>test_num;
+    p[0]=1;
     for(int i=0;i<num;i++)cin>>w[i];
     for(int i=0; i<test_num; i++) cin>>test[i];
     for(int i=0; i<num; i++){
-      // p[w[i]]=1;
-      for(int j=200000; j>0; j--){
-        if(j==w[i]&&p[w[i]]==0) p[w[i]]=1;
-        else if(p[j]) p[j+w[i]]=1;
+      for(int j=200000; j>=w[i]; j--){
+        if(p[j-w[i]]) p[j]=1;
       }
     }
 

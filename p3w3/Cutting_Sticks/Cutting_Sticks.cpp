@@ -6,8 +6,6 @@ using namespace std;
 int cost[1007][1007];
 int len,num,cut_node[1007];
 int dp(int l,int r){
-  // if(l>r) return;
-  // cout<<"AWA"<<endl;
   if(cost[l][r]!=0x3f3f3f3f) return cost[l][r];
   bool is_fund=false;
   for(int i=0; i<num; i++){
@@ -22,11 +20,9 @@ int dp(int l,int r){
 int main(int argc, char const *argv[]) {
   while (cin>>len&&len) {
     cin>>num;
-    // std::cout << "AA" << '\n';
     for(int i=0; i<num; i++) cin>>cut_node[i];
     memset(cost,MAXIMUM,sizeof(cost));
-    // cout<<"AW"<<endl;
-    cout<<"The minimum cutting is "<<dp(0,len)<<"."endl;
+    cout<<"The minimum cutting is "<<dp(0,len)<<"."<<endl;
 
   }
   return 0;
