@@ -1,11 +1,11 @@
 #include "bits/stdc++.h"
 using namespace std;
-long long w[20][20];
+int w[20][20];
 int q[20];
 int n;
-long long max_num,min_num;
+int max_num,min_num;
 int num=0;
-void qn(int cur,long long num){// (q[j],j) (i,cur)
+void qn(int cur,int num){// (q[j],j) (i,cur)
   if(cur<n){
     for(int i=0; i<n; i++){
       for(int j=0; j<cur; j++){
