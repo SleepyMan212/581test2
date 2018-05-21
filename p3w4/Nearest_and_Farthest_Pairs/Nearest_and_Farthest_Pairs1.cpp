@@ -5,6 +5,7 @@ std::vector<pair<pair<int,int>,int> > min_pair;
 int main(int argc, char const *argv[]) {
   int n;
   while (cin>>n&&n) {
+    freopen("DP_Nearest.in","r",stdin);
     int tmp;
     int min_a,min_b,min_num=1e9;
     for(int i=0; i<2000; i++) p[i]=-1;
