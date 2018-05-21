@@ -23,7 +23,7 @@ void qn(int cur,long long num){// (q[j],j) (i,cur)
   }
 }
 int main(int argc, char const *argv[]) {
-  freopen("Branch_8Queen.in","r",stdin);
+  // freopen("Branch_8Queen.in","r",stdin);
   int nCase;
   cin>>nCase;
   while (nCase--) {
