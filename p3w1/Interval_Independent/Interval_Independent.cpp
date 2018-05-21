@@ -6,7 +6,6 @@ struct interval{
   int a,b;
   int w;
   bool operator<(const interval &rhs)const{
-    if(b==rhs.b) return a<rhs.a;
     return b<rhs.b;
   }
 };
@@ -35,10 +34,6 @@ void sol(){
       else r=x-1;
     }
     x=a[r].b<=a[i].a ? r:l;
-    // for(j=0; j<i; j++){
-    //   if(a[i].a<a[j].b) break;
-    // }
-    // int x=j-1;
     dp[i]=max(dp[i-1],dp[x]+a[i].w);
   }
 
